@@ -1,0 +1,51 @@
+server:
+  port: 8083
+msg:
+  name: ht
+spring:
+  rabbitmq:
+    publisher-confirms: true #数据发送到交换机是否确认回调
+    publisher-returns: true #数据发送到交换机是否返回回调
+    listener:
+      simple:
+        acknowledge-mode: manual #采用手动应答
+        default-requeue-rejected: true
+
+        retry:
+          enabled: true
+
+
+
+
+
+
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 8084
+
+
+---
+spring:
+  profiles: sit
+server:
+  port: 8085
+
+airen: huangting
+student:
+  name: ${airen1:zc}
+  age: 20
+  skills:
+    - 泡妞
+    - 出牛逼
+  hobbys:
+    - 吃饭
+    - 睡觉
+  location: {provice: 江苏省,city: 徐州市, zone: 静安区}
+  pet:
+    name: 小胖
+    age: 2
+
